@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_hide_payment" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.hide.payment</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Agregar el campo en la sección de configuraciones -->
+            <xpath expr="//setting[@id='other_devices']" position="after">
+                <setting string="Ocultar Botón de Pago"
+                         help="Oculta el botón de pago y muestra solo el botón de acciones en el POS">
+                    <field name="hide_payment_button"/>
+                    <div class="content-group mt8" invisible="not hide_payment_button">
+                        <div class="text-muted">
+                            <i class="fa fa-info-circle"/> El botón "Pago" será ocultado y se mostrará el botón "Acciones" en su lugar.
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>
